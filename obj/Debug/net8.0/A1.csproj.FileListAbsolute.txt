@@ -1,0 +1,14 @@
+c:\Users\hulis\Documents\School\PROG6221\A1\bin\Debug\net8.0\A1.exe
+c:\Users\hulis\Documents\School\PROG6221\A1\bin\Debug\net8.0\A1.deps.json
+c:\Users\hulis\Documents\School\PROG6221\A1\bin\Debug\net8.0\A1.runtimeconfig.json
+c:\Users\hulis\Documents\School\PROG6221\A1\bin\Debug\net8.0\A1.dll
+c:\Users\hulis\Documents\School\PROG6221\A1\bin\Debug\net8.0\A1.pdb
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.AssemblyInfoInputs.cache
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.AssemblyInfo.cs
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.csproj.CoreCompileInputs.cache
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.dll
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\refint\A1.dll
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.pdb
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.genruntimeconfig.cache
+c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\ref\A1.dll

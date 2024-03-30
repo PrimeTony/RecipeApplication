@@ -1,0 +1,26 @@
+# Recipe Management Application
+
+This command-line application allows users to enter, view, scale, and clear recipes conveniently. Users can input ingredients with their quantities and units, specify steps for preparing the recipe, and scale the recipe by a factor of 0.5, 2, or 3. The application does not persist data between runs, storing all information in memory only while the program is active.
+
+## Usage
+
+To use the application, follow these steps:
+
+1. Clone or download the repository to your local machine.
+2. Open the solution file (`RecipeApplication.sln`) in Visual Studio.
+3. Build the solution to ensure all dependencies are resolved.
+4. Run the program (press F5 or select "Start Debugging" from the Debug menu).
+
+Once the program is running, follow the prompts to enter the details of your recipe, including ingredients and steps. You can then choose to display the recipe, scale it by a factor, reset quantities to their original values, or clear the recipe data to start anew.
+
+## Code Structure
+
+The main functionality of the application is implemented in two classes:
+
+- `Recipe`: Represents a recipe, storing information about ingredients, quantities, units, and steps. Provides methods for adding ingredients and steps, displaying the recipe, scaling quantities, resetting quantities, and clearing the recipe.
+- `Program`: Contains the entry point of the application. Handles user input and interaction.
+
+## Requirements
+
+- .NET Core or .NET Framework
+- Visual Studio (recommended) or another compatible IDE
