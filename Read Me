@@ -1,26 +1,34 @@
-# Recipe Management Application
+# Features
 
-This command-line application allows users to enter, view, scale, and clear recipes conveniently. Users can input ingredients with their quantities and units, specify steps for preparing the recipe, and scale the recipe by a factor of 0.5, 2, or 3. The application does not persist data between runs, storing all information in memory only while the program is active.
+1 Recipe Management: Enter the name, ingredients, quantities, units, calories, food groups, and steps for each recipe.
 
-## Usage
+2 Display Recipes: View individual recipes with all their details.
 
-To use the application, follow these steps:
+3 List All Recipes: See a list of all recipes sorted alphabetically by name.
 
-1. Clone or download the repository to your local machine.
-2. Open the solution file (`RecipeApplication.sln`) in Visual Studio.
-3. Build the solution to ensure all dependencies are resolved.
-4. Run the program (press F5 or select "Start Debugging" from the Debug menu).
+4 Calorie Notification: Get notified if the total calories of any recipe exceed 300.
 
-Once the program is running, follow the prompts to enter the details of your recipe, including ingredients and steps. You can then choose to display the recipe, scale it by a factor, reset quantities to their original values, or clear the recipe data to start anew.
+# Getting Started
 
-## Code Structure
+Clone the Repository:
+Clone this repository to your local machine using git clone <repository-url>.
 
-The main functionality of the application is implemented in two classes:
+Compile and Run the Application:
 
-- `Recipe`: Represents a recipe, storing information about ingredients, quantities, units, and steps. Provides methods for adding ingredients and steps, displaying the recipe, scaling quantities, resetting quantities, and clearing the recipe.
-- `Program`: Contains the entry point of the application. Handles user input and interaction.
+// Open a terminal or command prompt
 
-## Requirements
 
-- .NET Core or .NET Framework
-- Visual Studio (recommended) or another compatible IDE
+
+
+## Run the command dotnet run to compile and run the application.
+
+
+
+
+
+1 Enter Recipe Details:
+2 Follow the prompts in the console to enter the details of your recipes.
+3 For each recipe, enter the name, ingredients, quantities, units, calories, 4 food groups, and steps.
+5 View Recipes:
+6 After entering all recipes, you can choose to view the list of all recipes in alphabetical order.
+7 Optionally, you can select a specific recipe to view its details.

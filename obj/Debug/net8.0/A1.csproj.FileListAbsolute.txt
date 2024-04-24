@@ -12,3 +12,4 @@ c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\refint\A1.dll
 c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.pdb
 c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.genruntimeconfig.cache
 c:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\ref\A1.dll
+C:\Users\hulis\Documents\School\PROG6221\A1\obj\Debug\net8.0\A1.sourcelink.json

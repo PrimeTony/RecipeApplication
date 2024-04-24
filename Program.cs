@@ -1,129 +1,159 @@
-﻿using System;
+﻿
+using System.Collections.Generic;
 
 namespace RecipeApplication
 {
+    // Notifying the user about exceeding calories
+    public delegate void ExceedCaloriesNotification(string recipeName, double totalCalories);
+
+    // class for ingredients
+    class Ingredient
+    {
+        public string? Name { get; set; }
+        public double Quantity { get; set; }
+         public string Unit { get; set; } = "unit"; // Default value
+        public double Calories { get; set; }
+        public string? FoodGroup { get; set; } = "unknown"; // Default value
+    }
+
+    // Class for recipes
     class Recipe
     {
-        private string[] ingredients;
-        private string[] units;
-        private double[] quantities;
-        private string[] steps;
+        public string Name { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
+        public List<string> Steps { get; set; }
+        public double TotalCalories { get; private set; }
 
-        public Recipe()
+        public Recipe(string name)
         {
-            ingredients = new string[0];
-            units = new string[0];
-            quantities = new double[0];
-            steps = new string[0];
+            Name = name;
+            Ingredients = new List<Ingredient>();
+            Steps = new List<string>();
+            TotalCalories = 0;
         }
 
-        public void AddIngredient(string ingredient, double quantity, string unit)
+        // Method to add an ingredient to the recipe
+        public void AddIngredient(string name, double quantity, string unit, double calories, string foodGroup)
         {
-            Array.Resize(ref ingredients, ingredients.Length + 1);
-            Array.Resize(ref units, units.Length + 1);
-            Array.Resize(ref quantities, quantities.Length + 1);
-
-            ingredients[ingredients.Length - 1] = ingredient;
-            units[units.Length - 1] = unit;
-            quantities[quantities.Length - 1] = quantity;
+            Ingredient ingredient = new Ingredient
+            {
+                Name = name,
+                Quantity = quantity,
+                Unit = unit,
+                Calories = calories,
+                FoodGroup = foodGroup
+            };
+            Ingredients.Add(ingredient);
+            // Update total calories
+            TotalCalories += calories * quantity;
         }
 
+        // Method to add a step to the recipe
         public void AddStep(string step)
         {
-            Array.Resize(ref steps, steps.Length + 1);
-            steps[steps.Length - 1] = step;
+            Steps.Add(step);
         }
 
+        // Method to display the recipe
         public void DisplayRecipe()
         {
+            Console.WriteLine($"Recipe: {Name}");
             Console.WriteLine("Ingredients:");
-            for (int i = 0; i < ingredients.Length; i++)
+            foreach (var ingredient in Ingredients)
             {
-                Console.WriteLine($"{quantities[i]} {units[i]} of {ingredients[i]}");
+                Console.WriteLine($"{ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.Calories} calories) - {ingredient.FoodGroup}");
             }
 
             Console.WriteLine("\nSteps:");
-            for (int i = 0; i < steps.Length; i++)
+            for (int i = 0; i < Steps.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {steps[i]}");
+                Console.WriteLine($"{i + 1}. {Steps[i]}");
             }
-        }
 
-        public void ScaleRecipe(double factor)
-        {
-            for (int i = 0; i < quantities.Length; i++)
-            {
-                quantities[i] *= factor;
-            }
-        }
-
-        public void ResetQuantities()
-        {
-            // Reset quantities to original values
-            // Original values assumed to be stored elsewhere, not implemented in this example
-        }
-        
-
-        public void ClearRecipe()
-        {
-            ingredients = new string[0];
-            units = new string[0];
-            quantities = new double[0];
-            steps = new string[0];
+            Console.WriteLine($"Total Calories: {TotalCalories}");
         }
     }
 
+    // Main program
     class Program
     {
         static void Main(string[] args)
         {
-            Recipe recipe = new Recipe();
+            List<Recipe> recipes = new List<Recipe>();
 
-            Console.WriteLine("Enter the number of ingredients:");
-            int numIngredients = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < numIngredients; i++)
+            while (true)
             {
-                Console.WriteLine($"Enter ingredient {i + 1} name:");
-                string ingredient = Console.ReadLine();
+                Console.WriteLine("\nEnter the name of the recipe (or type 'done' to finish):");
+                string recipeName = Console.ReadLine()?? "";
 
-                Console.WriteLine($"Enter quantity for {ingredient}:");
-                double quantity = double.Parse(Console.ReadLine());
+                if (recipeName.ToLower() == "done")
+                    break;
 
-                Console.WriteLine($"Enter unit for {ingredient}:");
-                string unit = Console.ReadLine();
+                Recipe recipe = new Recipe(recipeName);
 
-                recipe.AddIngredient(ingredient, quantity, unit);
+                Console.WriteLine("Enter the number of ingredients:");
+                int numIngredients = int.Parse(Console.ReadLine() ?? "");
+
+                for (int i = 0; i < numIngredients; i++)
+                {
+                    Console.WriteLine($"Enter ingredient {i + 1} name:");
+                    string ingredientName = Console.ReadLine();
+
+                    Console.WriteLine($"Enter quantity for {ingredientName}:");
+                    double quantity = double.Parse(Console.ReadLine() ?? "0");
+
+                    Console.WriteLine($"Enter unit for {ingredientName}:");
+                    string unit = Console.ReadLine();
+
+                    Console.WriteLine($"Enter calories for {ingredientName}:");
+                    double calories = double.Parse(Console.ReadLine());
+
+                    Console.WriteLine($"Enter food group for {ingredientName}:");
+                    string foodGroup = Console.ReadLine();
+
+                    recipe.AddIngredient(ingredientName, quantity, unit, calories, foodGroup);
+                }
+
+                Console.WriteLine("Enter the number of steps:");
+                int numSteps = int.Parse(Console.ReadLine());
+
+                for (int i = 0; i < numSteps; i++)
+                {
+                    Console.WriteLine($"Enter step {i + 1}:");
+                    string step = Console.ReadLine();
+                    recipe.AddStep(step);
+                }
+
+                recipes.Add(recipe);
             }
 
-            Console.WriteLine("Enter the number of steps:");
-            int numSteps = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < numSteps; i++)
+            // Display recipes sorted alphabetically by name
+            recipes.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase));
+            foreach (var recipe in recipes)
             {
-                Console.WriteLine($"Enter step {i + 1}:");
-                string step = Console.ReadLine();
-                recipe.AddStep(step);
+                Console.WriteLine($"- {recipe.Name}");
             }
 
-            recipe.DisplayRecipe();
-
-            Console.WriteLine("\nEnter scaling factor (0.5, 2, or 3):");
-            double scale = double.Parse(Console.ReadLine());
-
-            recipe.ScaleRecipe(scale);
-            recipe.DisplayRecipe();
-
-            // Reset quantities if needed
-            // recipe.ResetQuantities();
-
-            Console.WriteLine("\nEnter 'clear' to clear recipe or any other key to exit:");
-            string input = Console.ReadLine();
-
-            if (input.ToLower() == "clear")
+            // Allow user to choose which recipe to display
+            Console.WriteLine("\nEnter the name of the recipe to display:");
+            string recipeToDisplay = Console.ReadLine();
+            Recipe selectedRecipe = recipes.Find(r => r.Name.Equals(recipeToDisplay, StringComparison.OrdinalIgnoreCase));
+            if (selectedRecipe != null)
             {
-                recipe.ClearRecipe();
-                Console.WriteLine("Recipe cleared.");
+                selectedRecipe.DisplayRecipe();
+            }
+            else
+            {
+                Console.WriteLine("Recipe not found.");
+            }
+
+            // Notify user if total calories exceed 300
+            foreach (var recipe in recipes)
+            {
+                if (recipe.TotalCalories > 300)
+                {
+                    Console.WriteLine($"Warning: {recipe.Name} exceeds 300 calories.");
+                }
             }
         }
     }
