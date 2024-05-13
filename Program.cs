@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 
 namespace RecipeApplication
@@ -11,7 +11,7 @@ namespace RecipeApplication
     {
         public string? Name { get; set; }
         public double Quantity { get; set; }
-         public string Unit { get; set; } = "unit"; // Default value
+        public string Unit { get; set; } = "unit"; // Default value
         public double Calories { get; set; }
         public string? FoodGroup { get; set; } = "unknown"; // Default value
     }
@@ -23,6 +23,9 @@ namespace RecipeApplication
         public List<Ingredient> Ingredients { get; set; }
         public List<string> Steps { get; set; }
         public double TotalCalories { get; private set; }
+
+        // Event for notifying when calories exceed 300
+        public event ExceedCaloriesNotification CaloriesExceeded;
 
         public Recipe(string name)
         {
@@ -46,6 +49,12 @@ namespace RecipeApplication
             Ingredients.Add(ingredient);
             // Update total calories
             TotalCalories += calories * quantity;
+
+            // Check if total calories exceed 300
+            if (TotalCalories > 300)
+            {
+                CaloriesExceeded?.Invoke(Name, TotalCalories);
+            }
         }
 
         // Method to add a step to the recipe
@@ -84,7 +93,7 @@ namespace RecipeApplication
             while (true)
             {
                 Console.WriteLine("\nEnter the name of the recipe (or type 'done' to finish):");
-                string recipeName = Console.ReadLine()?? "";
+                string recipeName = Console.ReadLine() ?? "";
 
                 if (recipeName.ToLower() == "done")
                     break;
@@ -108,8 +117,22 @@ namespace RecipeApplication
                     Console.WriteLine($"Enter calories for {ingredientName}:");
                     double calories = double.Parse(Console.ReadLine());
 
-                    Console.WriteLine($"Enter food group for {ingredientName}:");
-                    string foodGroup = Console.ReadLine();
+                    Console.WriteLine($"Enter food group for {ingredientName} (Enter 'help' for options):");
+                    string foodGroup = Console.ReadLine()?.ToLower();
+
+                    // Validate and get food group
+                    if (foodGroup == "help")
+                    {
+                        Console.WriteLine("Food Groups:");
+                        Console.WriteLine("- Protein");
+                        Console.WriteLine("- Carbohydrate");
+                        Console.WriteLine("- Fat");
+                        Console.WriteLine("- Fruit");
+                        Console.WriteLine("- Vegetable");
+                        Console.WriteLine("- Dairy");
+                        Console.WriteLine("Enter the food group:");
+                        foodGroup = Console.ReadLine()?.ToLower();
+                    }
 
                     recipe.AddIngredient(ingredientName, quantity, unit, calories, foodGroup);
                 }

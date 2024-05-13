@@ -1,34 +1,49 @@
-# Features
+Recipe Application
 
-1 Recipe Management: Enter the name, ingredients, quantities, units, calories, food groups, and steps for each recipe.
+This console application allows users to manage and store recipes along with their ingredients and steps. It also calculates and displays the total calories of each recipe and notifies the user if the total calories exceed 300.
 
-2 Display Recipes: View individual recipes with all their details.
+Features:
 
-3 List All Recipes: See a list of all recipes sorted alphabetically by name.
+1. Add an unlimited number of recipes.
+2. Enter a name for each recipe.
+3. Display a list of all recipes in alphabetical order by name.
+4. Choose which recipe to display from the list.
+5. For each ingredient, enter the number of calories and the food group.
+6. Calculate and display the total calories of all ingredients in a recipe.
+7. Notify the user when the total calories of a recipe exceed 300.
 
-4 Calorie Notification: Get notified if the total calories of any recipe exceed 300.
+Non-functional Requirements:
 
-# Getting Started
+8. Internationally acceptable coding standards are used.
+9. Classes are used for better organization and encapsulation.
+10. Generic collections (List<T>) are used to store recipes, ingredients, and steps.
+11. A delegate is used to notify the user when a recipe exceeds 300 calories.
+12. Unit tests are implemented to test the total calorie calculation.
 
-Clone the Repository:
-Clone this repository to your local machine using git clone <repository-url>.
+Instructions:
 
-Compile and Run the Application:
+1. Run the application by compiling and executing the Program.cs file.
+2. Follow the prompts to enter recipe details including name, ingredients, steps, and food groups.
+3. Once all recipes are entered, a list of recipes will be displayed in alphabetical order.
+4. Choose a recipe from the list to display its details including ingredients, steps, and total calories.
+5. If a recipe exceeds 300 calories, a warning will be displayed.
 
-// Open a terminal or command prompt
+Food Groups:
 
+For each ingredient, you can choose one of the following food groups:
+- Protein
+- Carbohydrate
+- Fat
+- Fruit
+- Vegetable
+- Dairy
 
+If you need help with available food groups, type 'help' when prompted for the food group.
 
+Unit Tests:
 
-## Run the command dotnet run to compile and run the application.
+Unit tests are not included in this README file. To run the unit tests, use a testing framework like NUnit or MSTest and create tests to verify the total calorie calculation logic in the Recipe class.
 
+For any questions or issues, please contact [Your Contact Information].
 
-
-
-
-1 Enter Recipe Details:
-2 Follow the prompts in the console to enter the details of your recipes.
-3 For each recipe, enter the name, ingredients, quantities, units, calories, 4 food groups, and steps.
-5 View Recipes:
-6 After entering all recipes, you can choose to view the list of all recipes in alphabetical order.
-7 Optionally, you can select a specific recipe to view its details.
+Enjoy managing your recipes with Recipe Application!
