@@ -2,6 +2,8 @@ Recipe Application
 
 This console application allows users to manage and store recipes along with their ingredients and steps. It also calculates and displays the total calories of each recipe and notifies the user if the total calories exceed 300.
 
+git: https://github.com/PrimeTony/RecipeApplication.git
+
 Features:
 
 1. Add an unlimited number of recipes.
