@@ -44,6 +44,3 @@ Unit Tests:
 
 Unit tests are not included in this README file. To run the unit tests, use a testing framework like NUnit or MSTest and create tests to verify the total calorie calculation logic in the Recipe class.
 
-For any questions or issues, please contact [Your Contact Information].
-
-Enjoy managing your recipes with Recipe Application!
