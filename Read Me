@@ -4,6 +4,14 @@ This console application allows users to manage and store recipes along with the
 
 git: https://github.com/PrimeTony/RecipeApplication.git
 
+Description of Changes:
+The updated code enhances the Recipe Application with additional features and improvements. 
+It introduces a class-based structure, incorporating generic collections for better data management. 
+Notably, the Ingredient class now includes properties for calories and food group. The Recipe class implements a delegate to notify users if a recipe exceeds 300 calories.
+Furthermore, the application now offers an unlimited recipe input capability, sorts recipes alphabetically, and calculates total calories per recipe,
+displaying warnings for excessive calorie intake. Lastly, it introduces the option for users to select food groups from a predefined list and suggests help for unfamiliar options.
+
+
 Features:
 
 1. Add an unlimited number of recipes.
